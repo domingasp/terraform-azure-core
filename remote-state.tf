@@ -23,9 +23,3 @@ resource "azurerm_storage_container" "tfstate" {
   storage_account_name  = azurerm_storage_account.tfstate.name
   container_access_type = "private"
 }
-
-resource "azurerm_role_assignment" "remote_tfstate_sp" {
-  scope                = azurerm_storage_account.tfstate.id
-  role_definition_name = "Storage Blob Data Contributor"
-  principal_id         = var.tfstate_sp_principal_id
-}
